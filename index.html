@@ -10,12 +10,35 @@
 
 body{
 font-family: Arial, sans-serif;
-margin: 40px;
+margin:0;
 background-color:#f4f4f4;
 line-height:1.6;
 }
 
+/* barra superior */
+header{
+background:white;
+padding:15px 40px;
+display:flex;
+justify-content:flex-end;
+box-shadow:0 2px 5px rgba(0,0,0,0.1);
+}
+
+header a{
+text-decoration:none;
+color:#3366ff;
+font-weight:bold;
+font-size:16px;
+}
+
+header a:hover{
+text-decoration:underline;
+}
+
+/* contenedor principal */
 .container{
+max-width:900px;
+margin:40px auto;
 background:white;
 padding:30px;
 border-radius:10px;
@@ -36,12 +59,19 @@ p{
 text-align:justify;
 }
 
+img{
+display:block;
+margin:auto;
+margin-top:15px;
+}
+
 .formula{
 background:#eef;
 padding:10px;
 border-left:5px solid #3366ff;
 margin:15px 0;
 font-weight:bold;
+text-align:center;
 }
 
 footer{
@@ -55,6 +85,10 @@ font-size:14px;
 </head>
 
 <body>
+
+<header>
+<a href="https://es.wikipedia.org/wiki/Ley_de_Ohm" target="_blank">Más información</a>
+</header>
 
 <div class="container">
 
@@ -77,15 +111,12 @@ voltaje aplicado e inversamente proporcional a la resistencia del material.
 </p>
 
 <img src="https://s1.significados.com/foto/triangulo-de-ohm-cke.jpg?class=article" alt="Diagrama ley de Ohm" width="400">
- 
 
 <div class="formula">
 V = I × R
 </div>
 
-<p>
-Donde:
-</p>
+<p>Donde:</p>
 
 <ul>
 <li>V = Voltaje (Voltios)</li>
@@ -104,7 +135,7 @@ La ley de Watts describe la relación entre la potencia eléctrica, el voltaje y
 La potencia representa la cantidad de energía que consume o produce un dispositivo eléctrico.
 </p>
 
-<img src="https://scontent-bog2-2.xx.fbcdn.net/v/t39.30808-6/499918119_717128744175808_5270154048999586997_n.jpg?stp=dst-jpg_p180x540_tt6&_nc_cat=107&ccb=1-7&_nc_sid=7b2446&_nc_ohc=ai_KQ457xUUQ7kNvwFkWcHm&_nc_oc=AdmeU1kn4_ehGCtD4yL7pBeFnL9tYKOvxbun7SJdKowHOZ6wviFeuZgp3E3az6NNCvU&_nc_zt=23&_nc_ht=scontent-bog2-2.xx&_nc_gid=-Fjv2Tw3IYl30AUUI3zAaA&_nc_ss=8&oh=00_AfxIfePrJeKqMp3Xs30tmFqR6oGhwYgiG6dqXK9Yih4SUw&oe=69B9E359" alt="Diagrama ley de Ohm" width="400">
+<img src="https://scontent-bog2-2.xx.fbcdn.net/v/t39.30808-6/499918119_717128744175808_5270154048999586997_n.jpg" alt="Diagrama ley de Watts" width="400">
 
 <div class="formula">
 P = V × I
@@ -139,7 +170,7 @@ potencia en diferentes dispositivos eléctricos.
 </p>
 
 <footer>
-Pie de pagina bien bonito
+Página creada para investigación académica
 </footer>
 
 </div>
