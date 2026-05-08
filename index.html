@@ -4,81 +4,295 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Ley de Ohm y Ley de Watts</title>
+
+<title>Fundamentos de Electrónica</title>
 
 <style>
 
-body{
-font-family: Arial, sans-serif;
+/* ========================= */
+/* CONFIGURACIÓN GENERAL */
+/* ========================= */
+
+*{
 margin:0;
-background-color:#f4f4f4;
-line-height:1.6;
+padding:0;
+box-sizing:border-box;
+scroll-behavior:smooth;
 }
 
-/* barra superior */
-header{
-background:white;
-padding:15px 40px;
+body{
+font-family:Arial, sans-serif;
+background:#050816;
+color:#dbeafe;
 display:flex;
-justify-content:space-between;
-align-items:center;
-box-shadow:0 2px 5px rgba(0,0,0,0.1);
+line-height:1.7;
+overflow-x:hidden;
+}
+
+/* ========================= */
+/* EFECTO LUZ AZUL */
+/* ========================= */
+
+.glow{
+position:fixed;
+width:350px;
+height:350px;
+background:radial-gradient(circle, rgba(37,99,235,0.22) 0%, transparent 72%);
+pointer-events:none;
+border-radius:50%;
+transform:translate(-50%, -50%);
+z-index:0;
+filter:blur(10px);
+}
+
+/* ========================= */
+/* SIDEBAR */
+/* ========================= */
+
+.sidebar{
+width:280px;
+height:100vh;
+position:fixed;
+left:0;
+top:0;
+background:#0b1120;
+padding:30px 20px;
+overflow-y:auto;
+border-right:1px solid #1e3a8a;
+box-shadow:0 0 25px rgba(30,64,175,0.25);
+}
+
+.sidebar h2{
+color:#60a5fa;
+margin-bottom:25px;
+font-size:24px;
+}
+
+.sidebar a{
+display:block;
+color:#cbd5e1;
+text-decoration:none;
+margin:10px 0;
+padding:10px;
+border-radius:10px;
+transition:0.3s;
+font-size:15px;
+}
+
+.sidebar a:hover{
+background:#172554;
+color:#93c5fd;
+transform:translateX(6px);
+box-shadow:0 0 15px rgba(59,130,246,0.3);
+}
+
+/* ========================= */
+/* CONTENIDO */
+/* ========================= */
+
+.main{
+margin-left:280px;
+width:calc(100% - 280px);
+padding:40px;
+position:relative;
+z-index:1;
+}
+
+.container{
+max-width:1050px;
+margin:auto;
+background:rgba(15,23,42,0.88);
+padding:45px;
+border-radius:24px;
+backdrop-filter:blur(10px);
+border:1px solid rgba(59,130,246,0.25);
+
+box-shadow:
+0 0 25px rgba(30,64,175,0.15),
+0 0 80px rgba(30,64,175,0.08);
+}
+
+/* ========================= */
+/* HEADER */
+/* ========================= */
+
+header{
+display:flex;
+justify-content:flex-end;
+margin-bottom:35px;
 }
 
 header a{
+background:linear-gradient(135deg,#2563eb,#1e40af);
+color:white;
+padding:12px 24px;
+border-radius:12px;
 text-decoration:none;
-color:#3366ff;
 font-weight:bold;
-font-size:16px;
+transition:0.35s;
 }
 
 header a:hover{
-text-decoration:underline;
+transform:scale(1.06);
+box-shadow:0 0 20px rgba(59,130,246,0.5);
 }
 
-/* contenedor principal */
-.container{
-max-width:900px;
-margin:40px auto;
-background:white;
-padding:30px;
-border-radius:10px;
-box-shadow:0 0 10px rgba(0,0,0,0.1);
-}
-
-h1{
-text-align:center;
-color:#333;
-}
-
-h2{
-color:#444;
-margin-top:30px;
-}
-
-p{
-text-align:justify;
-}
+/* ========================= */
+/* TEXTOS */
+/* ========================= */
 
 img{
 display:block;
 margin:auto;
-margin-top:15px;
+margin-bottom:35px;
+filter:drop-shadow(0 0 12px rgba(59,130,246,0.3));
 }
 
-.formula{
-background:#eef;
-padding:10px;
-border-left:5px solid #3366ff;
-margin:15px 0;
-font-weight:bold;
+h1{
 text-align:center;
+margin-bottom:45px;
+font-size:44px;
+color:#60a5fa;
+text-shadow:0 0 18px rgba(96,165,250,0.35);
 }
+
+h2{
+margin-top:55px;
+margin-bottom:20px;
+color:#60a5fa;
+border-bottom:2px solid #2563eb;
+padding-bottom:12px;
+font-size:32px;
+}
+
+h3{
+margin-top:32px;
+color:#93c5fd;
+font-size:24px;
+}
+
+h4{
+margin-top:18px;
+color:#bfdbfe;
+font-size:19px;
+}
+
+p{
+margin-top:10px;
+color:#dbeafe;
+text-align:justify;
+font-size:16px;
+}
+
+/* ========================= */
+/* ANIMACIONES */
+/* ========================= */
+
+.container *{
+animation:fadeIn 0.7s ease;
+}
+
+@keyframes fadeIn{
+from{
+opacity:0;
+transform:translateY(12px);
+}
+to{
+opacity:1;
+transform:translateY(0);
+}
+}
+
+/* ========================= */
+/* CIRCUITO */
+/* ========================= */
+
+.circuit-section{
+margin-top:90px;
+padding:45px;
+background:#020617;
+border-radius:25px;
+border:1px solid rgba(59,130,246,0.3);
+box-shadow:0 0 40px rgba(30,64,175,0.15);
+}
+
+.circuit-title{
+text-align:center;
+font-size:34px;
+margin-bottom:35px;
+color:#60a5fa;
+}
+
+svg{
+width:100%;
+max-width:950px;
+display:block;
+margin:auto;
+}
+
+.real-flow{
+stroke:#60a5fa;
+stroke-width:6;
+fill:none;
+stroke-dasharray:15;
+animation:moveBlue 1s linear infinite;
+}
+
+.conv-flow{
+stroke:#2563eb;
+stroke-width:6;
+fill:none;
+stroke-dasharray:15;
+animation:moveRed 1s linear infinite;
+}
+
+@keyframes moveBlue{
+from{
+stroke-dashoffset:0;
+}
+to{
+stroke-dashoffset:-30;
+}
+}
+
+@keyframes moveRed{
+from{
+stroke-dashoffset:0;
+}
+to{
+stroke-dashoffset:30;
+}
+}
+
+.bulb{
+animation:glowBulb 1s infinite alternate;
+}
+
+@keyframes glowBulb{
+from{
+filter:drop-shadow(0 0 6px #60a5fa);
+}
+to{
+filter:drop-shadow(0 0 24px #3b82f6);
+}
+}
+
+.explanation{
+margin-top:35px;
+background:#0f172a;
+padding:30px;
+border-radius:18px;
+border:1px solid rgba(59,130,246,0.15);
+}
+
+/* ========================= */
+/* FOOTER */
+/* ========================= */
 
 footer{
-margin-top:40px;
+margin-top:60px;
 text-align:center;
-color:#666;
+color:#94a3b8;
 font-size:14px;
 }
 
@@ -87,102 +301,224 @@ font-size:14px;
 
 <body>
 
-<header>
-<a href="https://alexus-tm.github.io/Sda-Pagina/" target="_blank">ELECTRONICA</a>
+<div class="glow"></div>
 
-<a href="https://jarudev.github.io/itcts4z/" target="_blank">VOLVER</a>
-</header>
+<!-- SIDEBAR -->
+
+<div class="sidebar">
+
+<h2>ÍNDICE</h2>
+
+<a href="#b1">Bloque 1: Fundamentos</a>
+<a href="#electricidad">• Electricidad</a>
+<a href="#electron">• Electrón</a>
+<a href="#movimiento">• Movimiento de electrones</a>
+
+<a href="#b2">Bloque 2: Flujo eléctrico</a>
+<a href="#real">• Sentido Real</a>
+<a href="#convencional">• Sentido Convencional</a>
+
+<a href="#b3">Bloque 3: Circuitos</a>
+<a href="#fuente">• Fuente de alimentación</a>
+<a href="#circuitoSimple">• Circuito eléctrico</a>
+
+<a href="#b4">Bloque 4: Comprensión conceptual</a>
+<a href="#diferencia">• Electricidad vs Electrónica</a>
+
+<a href="#b5">Bloque 5: Magnitudes eléctricas</a>
+<a href="#voltaje">• Voltaje</a>
+<a href="#corriente">• Corriente</a>
+<a href="#resistencia">• Resistencia</a>
+
+<a href="#circuito">Circuito Animado</a>
+
+</div>
+
+<!-- CONTENIDO -->
+
+<div class="main">
 
 <div class="container">
 
-<img src="https://www.etitc.edu.co/uploads/images/products/5f18d9b668ef9220349297.svg" alt="Diagrama ley de Ohm" width="400">
-  
-<h1>Investigación: Ley de Ohm y Ley de Watts</h1>
+<header>
+<a href="https://jarudev.github.io/itcts4z/" target="_blank">VOLVER</a>
+</header>
 
-<h2>Introducción</h2>
+<img src="https://www.etitc.edu.co/uploads/images/products/5f18d9b668ef9220349297.svg" width="300">
 
+<h1>Fundamentos de Electrónica</h1>
+
+<!-- BLOQUE 1 -->
+
+<h2 id="b1">Bloque 1: Fundamentos</h2>
+
+<h3 id="electricidad">Electricidad</h3>
 <p>
-La electricidad es una forma de energía utilizada en la mayoría de los dispositivos tecnológicos actuales.
-Para comprender cómo funciona un circuito eléctrico se utilizan diferentes principios físicos.
-Entre los más importantes se encuentran la Ley de Ohm y la Ley de Watts, las cuales describen la relación entre
-el voltaje, la corriente, la resistencia y la potencia eléctrica.
+Es una forma de energía producida por el movimiento de cargas eléctricas.
 </p>
 
-<h2>Ley de Ohm</h2>
-
+<h3 id="electron">Electrón</h3>
 <p>
-La ley de Ohm establece que la corriente eléctrica que circula por un conductor es directamente proporcional al
-voltaje aplicado e inversamente proporcional a la resistencia del material.
+Partícula subatómica con carga negativa.
 </p>
 
-<img src="https://s1.significados.com/foto/triangulo-de-ohm-cke.jpg?class=article" alt="Diagrama ley de Ohm" width="400">
+<h3 id="movimiento">Movimiento de electrones</h3>
+<p>
+Es el flujo de electrones dentro de un conductor.
+</p>
 
-<div class="formula">
-V = I × R
+<!-- BLOQUE 2 -->
+
+<h2 id="b2">Bloque 2: Flujo eléctrico</h2>
+
+<h3 id="real">Sentido Real</h3>
+<p>
+Los electrones viajan del polo negativo al positivo.
+</p>
+
+<h3 id="convencional">Sentido Convencional</h3>
+<p>
+La corriente convencional se representa del positivo al negativo.
+</p>
+
+<!-- BLOQUE 3 -->
+
+<h2 id="b3">Bloque 3: Circuitos</h2>
+
+<h3 id="fuente">Fuente de alimentación</h3>
+<p>
+Elemento que entrega energía eléctrica.
+</p>
+
+<h3 id="circuitoSimple">Circuito eléctrico</h3>
+<p>
+Conjunto de elementos conectados para permitir corriente.
+</p>
+
+<!-- BLOQUE 4 -->
+
+<h2 id="b4">Bloque 4: Comprensión conceptual</h2>
+
+<h3 id="diferencia">Diferencia entre electricidad y electrónica</h3>
+
+<p>
+La electricidad transporta energía; la electrónica controla ese transporte.
+</p>
+
+<!-- BLOQUE 5 -->
+
+<h2 id="b5">Bloque 5: Magnitudes eléctricas</h2>
+
+<h3 id="voltaje">Voltaje</h3>
+<p>
+Diferencia de potencial eléctrico.
+</p>
+
+<h3 id="corriente">Corriente</h3>
+<p>
+Cantidad de carga que circula.
+</p>
+
+<h3 id="resistencia">Resistencia</h3>
+<p>
+Oposición al flujo eléctrico.
+</p>
+
+<!-- CIRCUITO -->
+
+<div class="circuit-section" id="circuito">
+
+<h2 class="circuit-title">Circuito Eléctrico Animado</h2>
+
+<svg viewBox="0 0 900 400">
+
+<!-- Cable -->
+<rect x="150" y="180" width="600" height="10" fill="#94a3b8"/>
+
+<!-- Pila -->
+<rect x="120" y="130" width="20" height="120" fill="#e2e8f0"/>
+<rect x="90" y="150" width="20" height="80" fill="#64748b"/>
+
+<!-- Bombillo -->
+<circle cx="750" cy="185" r="40" fill="#60a5fa" class="bulb"/>
+
+<!-- Sentido real -->
+<path class="real-flow"
+d="M 700 150 L 200 150" />
+
+<!-- Sentido convencional -->
+<path class="conv-flow"
+d="M 200 230 L 700 230" />
+
+<!-- Flechas -->
+<polygon points="200,145 220,150 200,155" fill="#60a5fa"/>
+<polygon points="700,225 680,230 700,235" fill="#2563eb"/>
+
+<!-- Textos -->
+<text x="180" y="120" fill="#60a5fa" font-size="22">
+Sentido Real
+</text>
+
+<text x="520" y="280" fill="#2563eb" font-size="22">
+Sentido Convencional
+</text>
+
+<text x="70" y="330" fill="#93c5fd" font-size="18">
+Mayor energía (Voltaje alto)
+</text>
+
+<text x="620" y="330" fill="#93c5fd" font-size="18">
+Menor energía
+</text>
+
+</svg>
+
+<div class="explanation">
+
+<p>
+El sentido real representa el movimiento físico de los electrones desde el polo negativo hacia el positivo.
+</p>
+
+<p>
+El sentido convencional fue definido históricamente antes de descubrirse el electrón, por eso se representa en dirección opuesta.
+</p>
+
+<p>
+Aunque ambos sentidos son contrarios, el bombillo enciende igual porque la transferencia de energía ocurre independientemente de la convención utilizada para analizar el circuito.
+</p>
+
+<p>
+La mayor energía se encuentra cerca del terminal positivo de la pila debido al mayor potencial eléctrico (voltaje). La menor energía se encuentra hacia el terminal negativo.
+</p>
+
+<p>
+La corriente eléctrica depende de la diferencia de potencial y del movimiento de carga dentro del circuito cerrado.
+</p>
+
 </div>
 
-<p>Donde:</p>
-
-<ul>
-<li>V = Voltaje (Voltios)</li>
-<li>I = Corriente (Amperios)</li>
-<li>R = Resistencia (Ohmios)</li>
-</ul>
-
-<p>
-Esto significa que si el voltaje aumenta, la corriente también aumentará siempre que la resistencia se mantenga constante.
-</p>
-
-<h2>Ley de Watts</h2>
-
-<p>
-La ley de Watts describe la relación entre la potencia eléctrica, el voltaje y la corriente.
-La potencia representa la cantidad de energía que consume o produce un dispositivo eléctrico.
-</p>
-
-<img src="https://scontent-bog2-2.xx.fbcdn.net/v/t39.30808-6/499918119_717128744175808_5270154048999586997_n.jpg?stp=dst-jpg_p180x540_tt6&_nc_cat=107&ccb=1-7&_nc_sid=7b2446&_nc_ohc=ai_KQ457xUUQ7kNvwFkWcHm&_nc_oc=AdmeU1kn4_ehGCtD4yL7pBeFnL9tYKOvxbun7SJdKowHOZ6wviFeuZgp3E3az6NNCvU&_nc_zt=23&_nc_ht=scontent-bog2-2.xx&_nc_gid=nduzSdo71wc6Nazt1npqUw&_nc_ss=8&oh=00_AfxJtwrI1O9qnZeQ83Hx7a2OfqcswDFTxAMXKp1v68BSJw&oe=69B9E359" alt="Diagrama ley de Watts" width="400">
-
-<div class="formula">
-P = V × I
 </div>
 
-<ul>
-<li>P = Potencia (Watts)</li>
-<li>V = Voltaje (Voltios)</li>
-<li>I = Corriente (Amperios)</li>
-</ul>
-
-<h2>Relación entre ambas leyes</h2>
-
-<p>
-Al combinar la ley de Ohm con la ley de Watts se pueden obtener otras fórmulas para calcular la potencia:
-</p>
-
-<div class="formula">
-P = I² × R
-</div>
-
-<div class="formula">
-P = V² / R
-</div>
-
-<h2>Conclusión</h2>
-
-<p>
-Las leyes de Ohm y de Watts son fundamentales para comprender el funcionamiento de los circuitos eléctricos.
-Gracias a estas leyes es posible calcular el comportamiento de la corriente, el voltaje, la resistencia y la
-potencia en diferentes dispositivos eléctricos.
-</p>
-
- 
 <footer>
 Página creada para investigación académica
 </footer>
 
 </div>
 
+</div>
+
+<script>
+
+const glow = document.querySelector('.glow');
+
+document.addEventListener('mousemove', (e) => {
+
+glow.style.left = e.clientX + 'px';
+glow.style.top = e.clientY + 'px';
+
+});
+
+</script>
+
 </body>
 </html>
-
-
-
